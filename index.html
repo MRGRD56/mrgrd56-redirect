@@ -33,8 +33,23 @@
                 urlString += ('?redirectFromOldDomain=' + oldDomain);
             }
 
-            redirectAnchor.href = urlString;
-            window.location.href = urlString;
+            let urlStringWithLocalStorage = urlString;
+
+            try {
+                const localStorageDump = btoa(encodeURIComponent(JSON.stringify(localStorage)));
+                urlStringWithLocalStorage += ('&redirectFromOldDomainLocalStorage=' + localStorageDump);
+            } catch (e) {
+                console.error('Unable to dump localStorage', e);
+            }
+
+            try {
+                redirectAnchor.href = urlStringWithLocalStorage;
+                window.location.href = urlStringWithLocalStorage;
+            } catch (e) {
+                console.error('Unable to follow the link with a localStorage dump', e);
+                redirectAnchor.href = urlString;
+                window.location.href = urlString;
+            }
         }, 500);
     </script>
 </body>
