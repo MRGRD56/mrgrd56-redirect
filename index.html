@@ -1,1 +1,37 @@
-Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRGRD56</title>
+</head>
+<body>
+    <h3>MRGRD56 (a.k.a. "Tinkoff5BukvSolver")</h3>
+
+    <p>Redirecting... / Перенаправление...</p>
+
+    <a id="redirectAnchor">Click here if you're not redirected / Нажмите сюда, если перенаправление не сработает</a>
+
+    <script>
+        setTimeout(() => {
+            const redirectAnchor = document.getElementById('redirectAnchor');
+
+            const oldDomain = 'mrgrd56.ru';
+            const newDomain = 'kiriru.su';
+
+            const url = new URL(window.location);
+            url.host = newDomain;
+            let urlString = url.toString();
+            if (urlString.includes('?')) {
+                urlString += ('&redirectFromOldDomain=' + oldDomain);
+            } else {
+                urlString += ('?redirectFromOldDomain=' + oldDomain);
+            }
+
+            redirectAnchor.href = urlString;
+            window.location.href = urlString;
+        }, 500);
+    </script>
+</body>
+</html>
