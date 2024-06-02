@@ -23,6 +23,10 @@
             const url = new URL(window.location);
             url.host = newDomain;
             let urlString = url.toString();
+            if (!url.hash) {
+                urlString += '#';
+            }
+            
             if (urlString.includes('?')) {
                 urlString += ('&redirectFromOldDomain=' + oldDomain);
             } else {
